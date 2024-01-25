@@ -6,7 +6,7 @@ class Customers(models.Model):
     LIVE = 1
     DELETE = 0
     DELETE_CHOICES = ((LIVE,'Live'),(DELETE,'Delete'))
-    name = models.CharField(max_length=200)
+    username = models.CharField(max_length=200,default="",unique=True)
     address = models.TextField()
     phone = models.IntegerField()
     user = models.OneToOneField(User,related_name='customer',on_delete=models.CASCADE)
@@ -15,5 +15,5 @@ class Customers(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.name
+        return self.username
 
